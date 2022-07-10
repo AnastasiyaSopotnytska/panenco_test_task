@@ -1,0 +1,47 @@
+.form {
+  border: 1px solid #EEEEEE;
+  margin-bottom: 24px;
+  padding: 24px;
+  box-shadow: 0px 1px 4px rgba(20, 20, 30, 0.05), 0px 2px 10px rgba(20, 20, 30, 0.05);
+  border-radius: 24px;
+  font-size: 12px;
+  color: #757575;
+  display:flex;
+}
+
+.label_input {
+  flex-direction: column;
+  margin-right: 24px;
+}
+
+.label {
+  padding-bottom: 4px;
+}
+  
+.input {
+  display: block;
+  width: 194px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #BDBDBD;
+  border-radius: 4px;
+}
+
+.select {
+  padding: 0;
+  text-align: left;
+}
+
+.submit-buttom {
+  margin-top: 14px;
+  padding: 0 36px;
+  font-weight: 700;
+  font-size: 16px;
+  background: #652AD3;
+  border-radius: 4px;
+  border: none;
+  box-shadow: none;
+  color: #EEEEEE;
+  height: 42px;
+  box-sizing: border-box;
+}

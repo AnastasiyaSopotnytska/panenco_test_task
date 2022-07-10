@@ -1,9 +1,10 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
+import './Pagination.scss';
 
 type Props = {
-  teams: Team;
+  component: Team | Player;
   perPage: number;
   currentPage: number;
   setPerPage: (perPage: number) => void;
@@ -11,15 +12,22 @@ type Props = {
 };
 
 export const Pagination: React.FC<Props> = ({
-  teams,
+  component,
   perPage,
   currentPage,
   setPerPage,
   setCurrentPage,
 }) => {
   const total_pages = [];
+  let total_per_pages = [];
 
-  for (let i = 1; i <= teams.meta.total_pages; i++) {
+  if (perPage % 8 === 0) {
+    total_per_pages = [8, 16];
+  } else {
+    total_per_pages = [10, 20, 30];
+  }
+
+  for (let i = 1; i <= component.meta.total_pages; i++) {
     total_pages[i - 1] = i;
   }
 
@@ -40,15 +48,15 @@ export const Pagination: React.FC<Props> = ({
           value={perPage}
           onChange={(event) => setPerPage(Number(event.target.value))}
         >
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="30">30</option>
+          {total_per_pages.map(per_page => (
+            <option value={per_page} key={per_page}>{per_page}</option>
+          ))}
         </select>
         <label
           htmlFor="per_page"
         >
-          {teams
-              && `Displaying ${(currentPage - 1) * perPage + 1}-${(currentPage - 1) * perPage + teams?.data.length} of ${teams?.meta.total_count} items`}
+          {component
+            && `Displaying ${(currentPage - 1) * perPage + 1}-${(currentPage - 1) * perPage + component?.data.length} of ${component?.meta.total_count} items`}
         </label>
       </span>
 
@@ -56,7 +64,7 @@ export const Pagination: React.FC<Props> = ({
         <label
           htmlFor="pages"
         >
-          {`${currentPage} of ${teams?.meta.total_pages} pages`}
+          {`${currentPage} of ${component?.meta.total_pages} pages`}
         </label>
 
         <input
@@ -82,7 +90,7 @@ export const Pagination: React.FC<Props> = ({
           type="button"
           value=">"
           className="button_page"
-          disabled={teams?.meta.next_page === null}
+          disabled={component?.meta.next_page === null}
           onClick={() => setCurrentPage(currentPage + 1)}
         />
       </span>

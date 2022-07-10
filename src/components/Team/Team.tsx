@@ -22,8 +22,9 @@ export const Team: React.FC = () => {
   return (
     <>
       <h2 className="title">Teams</h2>
-
-      <Form />
+      {teams && (
+        <Form teamLast={teams?.meta.total_count} />
+      )}
 
       <table className="content-table">
         <thead>
@@ -49,7 +50,7 @@ export const Team: React.FC = () => {
 
       {teams && (
         <Pagination
-          teams={teams}
+          component={teams}
           perPage={perPage}
           currentPage={currentPage}
           setPerPage={setPerPage}

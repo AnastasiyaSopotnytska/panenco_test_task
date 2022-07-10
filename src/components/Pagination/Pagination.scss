@@ -1,0 +1,26 @@
+.displaying_items {
+    color: #757575;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .button {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 7.5px 10px;
+    border: 1px solid #EEEEEE;
+    border-radius: 4px;
+    font-weight: 400; 
+    width: 67px;
+  }
+  
+  .button_page {
+    border: 0;
+    background-color: #fff;
+  }
+  
+  .button_page_left {
+    margin-left: 48px;
+  }
+  
