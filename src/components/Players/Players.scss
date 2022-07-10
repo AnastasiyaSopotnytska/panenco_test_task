@@ -1,0 +1,55 @@
+.player {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.player_card {
+  width: 250px;
+  height: 120px;
+  margin-right: 24px;
+  margin-bottom: 24px;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0px 3px 8px rgba(20, 20, 30, 0.05), 0px 6px 15px rgba(20, 20, 30, 0.05);
+  border-radius: 24px;
+  display: flex;
+
+  &:nth-child(4n+4) {
+    margin-right: 0;
+  }
+}
+
+.initials {
+  font-weight: 700;
+  font-size: 32px;
+  color: #1D0053;
+  position: relative;
+  // margin-right: 200px;
+  margin: 40px 10px 20px 40px;
+
+  &::before {
+    content: " ";
+    position: absolute;
+    z-index: -1;
+
+    background-color: #EDE6FB;
+    border-radius: 50%;
+
+    width: 80px;
+    height: 80px;
+    top: -20px;
+    right: -20px;
+  }
+}
+
+.name_lasname {
+  font-weight: 500;
+  font-size: 20px;
+  color: #14141E;
+  padding: 35px 30px;
+  cursor: pointer;
+
+  &:hover {
+    color: #652AD3;
+  }
+}
