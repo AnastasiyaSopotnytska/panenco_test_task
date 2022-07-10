@@ -9,6 +9,7 @@ export const Team: React.FC = () => {
   const [teams, setTeams] = useState<Team>();
   const [perPage, setPerPage] = useState<number>(10);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [addedTeams, setAddedTeams] = useState<newTeam[]>([]);
 
   useEffect(() => {
     getTeam(perPage, currentPage)
@@ -17,13 +18,15 @@ export const Team: React.FC = () => {
         // eslint-disable-next-line no-console
         console.log(error);
       });
+    // eslint-disable-next-line no-console
+    console.log(teams);
   }, [perPage, currentPage]);
 
   return (
     <>
       <h2 className="title">Teams</h2>
       {teams && (
-        <Form teamLast={teams?.meta.total_count} />
+        <Form teams={teams} addedTeams={addedTeams} setAddedTeams={setAddedTeams} />
       )}
 
       <table className="content-table">
@@ -37,7 +40,7 @@ export const Team: React.FC = () => {
         </thead>
         <tbody>
           {teams
-            && teams.data.map(team => (
+            && [...teams.data, ...addedTeams].map(team => (
               <tr key={team.id}>
                 <th>{team.name}</th>
                 <th>{team.city}</th>

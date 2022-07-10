@@ -1,5 +1,5 @@
 type Team = {
-  'data': Array<TeamData>,
+  'data': Array<TeamData | newTeam>,
   'meta': {
     'total_pages': number,
     'current_page': number,
@@ -54,4 +54,5 @@ type newTeam = {
   'abbreviation': string,
   'city': string,
   'name': string
+  'conference': string,
 };
